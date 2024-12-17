@@ -27,6 +27,10 @@ modules:
       - dunst
       - fish
       - sddm
+      - kitty
+      - curl
+      - wget
+      - gcc
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
     system:
@@ -35,5 +39,21 @@ modules:
         - io.github.zen_browser.zen
     user: {} # Also add Flathub user repo, but no user packages
 
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - JetBrainsMono
+        - NerdFontsSymbolsOnly
+      google-fonts:
+        - Roboto
+        - Open Sans
+
+  - type: brew
+    nofile-limits: true # increase nofile limits
+    brew-analytics: false # disable telemetry
+
+  
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
+
 

@@ -6,8 +6,8 @@ name: reddos
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: quay.io/fedora-ostree-desktops/base-atomic
-image-version: 41 # latest version
+base-image: ghcr.io/ublue-os/bluefin-dx-nvidia
+image-version: gts # latest version
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -29,14 +29,13 @@ modules:
       - rofi
       - polybar
       - dunst
-      - fish
-      - sddm
       - kitty
       - curl
       - wget
       - gcc
-      - akmod-nvidia 
-      - xorg-x11-drv-nvidia-cuda
+    remove:
+      - ptyxis
+      - code
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
     system:
@@ -58,10 +57,6 @@ modules:
       google-fonts:
         - Roboto
         - Open Sans
-
-  - type: brew
-    nofile-limits: true # increase nofile limits
-    brew-analytics: false # disable telemetry
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
